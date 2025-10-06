@@ -1,0 +1,56 @@
+{
+  "name": "dreamcoins-api",
+  "license": "CC0-1.0",
+  "scripts": {
+    "dev": "bun run --hot src/main.ts",
+    "build": "bun build src/main.ts --target bun",
+    "start": "bun run src/main.ts",
+    "lint": "eslint src/*.ts src/**/*.ts --fix",
+    "format": "prettier {src/*.ts,src/**/*.ts} --write",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^0.0.53",
+    "@ai-sdk/google": "^0.0.55",
+    "@ai-sdk/openai": "^0.0.70",
+    "@google-cloud/storage": "^7.13.0",
+    "@neynar/nodejs-sdk": "^1.70.0",
+    "@pinata/sdk": "^2.1.0",
+    "ai": "^3.4.23",
+    "bullmq": "^5.26.2",
+    "file-type": "^19.6.0",
+    "fuzzyset": "^1.0.7",
+    "hono": "^4.6.7",
+    "ioredis": "^5.4.1",
+    "nanoid": "^5.0.8",
+    "node-telegram-bot-api": "^0.66.0",
+    "oauth-1.0a": "^2.2.6",
+    "pino": "^9.5.0",
+    "pino-pretty": "^11.3.0",
+    "replicate": "^1.0.1",
+    "twitter-api-v2": "^1.18.1",
+    "viem": "^2.21.36",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/bun": "latest",
+    "@types/eslint-config-prettier": "^6.11.3",
+    "@types/eslint__js": "^8.42.3",
+    "@types/fuzzyset": "^1.0.7",
+    "@types/node-telegram-bot-api": "^0.64.7",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.12.1"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}

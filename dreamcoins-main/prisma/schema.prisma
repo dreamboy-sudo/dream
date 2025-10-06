@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum DreamStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum Environment {
+  LOCAL
+  PRODUCTION
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  did           String  @unique
+  walletAddress String
+  Dream         Dream[]
+}
+
+// A dream that the user has submitted
+model Dream {
+  id        Int         @id @default(autoincrement())
+  prompt    String
+  imageUrl  String?
+  status    DreamStatus @default(PENDING)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  name      String?
+  address   String?
+  ticker    String?
+  chainId   Int?
+
+  userId Int?
+  user   User? @relation(fields: [userId], references: [id])
+
+  environment Environment
+  metadata    Json?
+}
